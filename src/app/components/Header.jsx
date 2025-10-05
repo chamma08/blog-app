@@ -7,6 +7,14 @@ import { usePathname } from "next/navigation";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import {
+  SignedIn,
+  SignedInUser,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { dark, light } from "@clerk/themes";
 
 export default function Header() {
   const path = usePathname();
@@ -24,7 +32,7 @@ export default function Header() {
           href="/"
           className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
         >
-          <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
+          <span className="px-2 py-1 bg-blue-500 rounded-lg text-white">
             Matheesha&apos;s
           </span>
           Blog
@@ -48,8 +56,21 @@ export default function Header() {
             pill
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           >
-            {mounted ? (theme === "light" ? <FaSun /> : <FaMoon />) : <FaSun />}
+            {mounted ? theme === "light" ? <FaSun /> : <FaMoon /> : <FaSun />}
           </Button>
+          <SignedIn>
+            <UserButton
+              appearance={{
+                baseTheme: theme === "light" ? light : dark,
+              }}
+              userProfileUrl="/dashboard?tab=profile"
+            />
+          </SignedIn>
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button color="blue">Sign In</Button>
+            </Link>
+          </SignedOut>
         </div>
 
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">

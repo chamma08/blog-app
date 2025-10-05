@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.33.2",
+    "@clerk/themes": "^2.4.24",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.9",
     "next": "15.5.4",
