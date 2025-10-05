@@ -67,7 +67,7 @@ export default function Header() {
             />
           </SignedIn>
           <SignedOut>
-            <Link href="/sign-in">
+            <Link href="/pages/sign-in">
               <Button color="blue">Sign In</Button>
             </Link>
           </SignedOut>
