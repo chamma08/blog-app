@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+
+@variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
