@@ -11,6 +11,7 @@ export const CreateOrUpdateUser = async (
 ) => {
   try {
     await connect();
+    console.log("Creating/Updating user with clerkId:", id);
     const user = await User.findOneAndUpdate(
       { clerkId: id },
       {
@@ -24,9 +25,11 @@ export const CreateOrUpdateUser = async (
       },
       { new: true, upsert: true }
     );
+    console.log("User created/updated successfully:", user);
     return user;
   } catch (error) {
     console.log("Error in CreateOrUpdateUser:", error);
+    throw error;
   }
 };
 
